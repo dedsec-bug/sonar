@@ -12,13 +12,7 @@ pipeline{
            '''        
       }
     }
-    
-    stage ('Check-Git-Secrets') {
-      steps {
-        sh 'docker run dxa4481/trufflehog https://github.com/dedsec-bug/sonar.git > trufflehog'
-      }
-    } 
-    
+   
     stage ('Build') {
       steps {
         sh 'mvn clean package'
