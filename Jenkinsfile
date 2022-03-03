@@ -12,6 +12,16 @@ pipeline{
            '''        
       }
     }
+    
+    stage ('Source Composition Analysis') {
+      steps {
+       sh 'rm owasp* || true'
+       sh 'wget https://raw.githubusercontent.com/dedsec-bug/sonar/master/owasp-dependency-check.sh'
+       sh 'chmod +x owasp-dependency-check.sh'
+       sh 'bash owasp-dependency-check.sh'
+       sh 'cat /var/lib/jenkins/OWASP-Check/reports/dependency-check-report.xml'
+      }
+    }
    
     stage ('Build') {
       steps {
