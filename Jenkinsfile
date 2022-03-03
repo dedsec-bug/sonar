@@ -13,7 +13,7 @@ pipeline{
       }
     }
     
-  <!--  stage ('Check-Git-Secrets') {
+    stage ('Check-Git-Secrets') {
       steps {
         sh 'rm trufflehog || true'
         sh 'docker run dxa4481/trufflehog --json https://github.com/dedsec-bug/sonar.git > trufflehog'
